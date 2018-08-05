@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Map from './Map'
+import SearchResults from './SearchResults'
 import { restaurants } from "./locations"
 import { Marker, InfoWindow } from "react-google-maps"
 
@@ -41,6 +42,7 @@ class Main extends Component {
                 </Marker>
               ))}
             </Map>
+            <SearchResults locations={this.state.locations} />
             </div>
         )
     }
