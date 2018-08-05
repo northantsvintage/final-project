@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
-import Navigation from '../components/Navigation'
-import Map from '../components/Map'
-
-const locations = [
-    {"id": 1, "title": "Karmana", "name": "Karmana", "position": {"lat": 52.259, "lng": -0.864}},
-    {"id": 2, "title": "Meem-Saab", "name": "Meem-Saab", "position": {"lat": 52.2449, "lng": -0.869}},
-    {"id": 3, "title": "Lazeez", "name": "Lazeez", "position": {"lat": 52.2454, "lng": -0.897}},
-    {"id": 4, "title": "Star of India", "name": "Star of India", "position": {"lat": 52.2481, "lng": -0.881}},
-    {"id": 5, "title": "Imperial Raj", "name": "Imperial Raj", "position": {"lat": 52.253, "lng": -0.8794}}
-    ]
+import React, { Component } from 'react'
+import Map from './Map'
+import { restaurants } from "./locations"
+import { Marker, InfoWindow } from "react-google-maps"
 
 class Main extends Component {
     state = {
@@ -16,14 +9,38 @@ class Main extends Component {
         center: {
             lat: 52.2454,
             lng: -0.89
-          },
-          zoom: 13
+          }
+    }
+    componentDidMount() {
+      this.setState({
+        locations: restaurants
+      })
     }
     render() {
         return(
             <div>
-                <Navigation locations={this.state.locations} />
-                <Map locations={this.state.locations} />
+            <Map zoom={13} center={this.state.center}>
+              {this.state.locations.map(location => (
+                <Marker
+                  key={location.id}
+                  position={{ lat: location.pos[0], lng: location.pos[1] }}
+                  animation={location.animation}
+                >
+                {location.info_open && (
+                  <InfoWindow
+                    key={location.id}
+
+                  >
+                    <div>
+                      <p>{location.title}</p>
+                      <p>{location.address}</p>
+                      <p>{location.call}</p>
+                    </div>
+                  </InfoWindow>
+                  )}
+                </Marker>
+              ))}
+            </Map>
             </div>
         )
     }

@@ -3,14 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/googlemaps": "^3.30.11",
+    "@types/markerclustererplus": "^2.1.33",
+    "@types/react": "^16.4.7",
     "ajv": "^6.5.2",
     "escape-string-regexp": "^1.0.5",
     "google-map-react": "^1.0.5",
     "google-maps-react": "^2.0.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-google-maps": "^9.4.5",
     "react-offcanvas": "^0.3.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "recompose": "^0.26.0"
   },
   "scripts": {
     "start": "react-scripts start",
