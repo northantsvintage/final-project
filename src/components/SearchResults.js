@@ -2,7 +2,7 @@ import React from 'react'
 
 const SearchResults = (props) => {
   const locations = props.locations.map(location => (
-    <li key={location.id}>
+    <li key={location.index}>
       {location.title}
       aria-labelledby={`view details for ${location.title}`}
     </li>

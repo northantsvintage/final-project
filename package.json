@@ -12,10 +12,12 @@
     "google-maps-react": "^2.0.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-foursquare": "^1.0.3",
     "react-google-maps": "^9.4.5",
     "react-offcanvas": "^0.3.1",
     "react-scripts": "1.1.4",
-    "recompose": "^0.26.0"
+    "recompose": "^0.26.0",
+    "superagent": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",
