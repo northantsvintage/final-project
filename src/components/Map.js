@@ -1,6 +1,6 @@
 import React from "react";
 import { compose, withProps } from "recompose";
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps";
+import { withScriptjs, withGoogleMap, GoogleMap} from "react-google-maps";
 
 /*
  Map settings as per official react google map configuration with recompose
@@ -17,7 +17,7 @@ const Map = compose(
   withGoogleMap
 )(props => (
   <GoogleMap
-    defaultZoom={11}
+    defaultZoom={12}
     defaultCenter={{ lat: 52.236927, lng: -0.898598 }}
     zoom={props.zoom}
   >
