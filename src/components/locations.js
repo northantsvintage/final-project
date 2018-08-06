@@ -1,6 +1,6 @@
 export const restaurants = [
   {
-    index: 0,
+    id: 0,
     title: "Clues - Vietnamese restaurant",
     address: "21 Gold St, Northampton NN1 1RA",
     call: "01604 947345",
@@ -8,7 +8,7 @@ export const restaurants = [
     openInfo: false
   },
   {
-    index: 1,
+    id: 1,
     title: "Sophia's Restaurant - Mediterranean restaurant",
     address: "54 Bridge St, Northampton NN1 1PA",
     call: "01604 250654",
@@ -16,7 +16,7 @@ export const restaurants = [
     openInfo: false
   },
   {
-    index: 2,
+    id: 2,
     title: "Pamukkale - Turkish restaurant",
     address: "54 St Giles' St, Northampton NN1 1JW",
     call: "01604 947600",
@@ -24,7 +24,7 @@ export const restaurants = [
     openInfo: false
   },
   {
-    index: 3,
+    id: 3,
     title: "Les Olives - Spanish restaurant",
     address: "18 Sheep St, Northampton NN1 2LU",
     call: "01604 637652",
@@ -32,7 +32,7 @@ export const restaurants = [
     openInfo: false
   },
   {
-    index: 4,
+    id: 4,
     title: "The Church Restaurant - British Restaurant",
     address: "67-83 Bridge St, Northampton NN1 1PD",
     call: "01604 603800",

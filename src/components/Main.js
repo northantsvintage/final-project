@@ -37,7 +37,7 @@ class Main extends Component {
       })
     }
 
-    onToggleInfo = index => {
+    onToggleInfo = id => {
         // manipulating openInfo boolean values to toggle on and off
         // loop throgh locations using map, check condition and
         // modifying objects properties with ... spread
@@ -45,7 +45,7 @@ class Main extends Component {
         // https://medium.com/front-end-hacking/immutability-in-array-of-objects-using-map-method-dd61584c7188
       const new_locations = this.state.locations.map(
         location =>
-          index === location.index ?
+          id === location.id ?
           // modified value of openInfo, toggling InfoWindow
             { ...location, openInfo: !location.openInfo }
             // setting openInfo to false value
@@ -53,6 +53,13 @@ class Main extends Component {
       );
       this.setState({ locations: new_locations });
     };
+
+    Search = (event) => {
+      event.preventDefault();
+      const query = this.search.value.toLowerCase()
+      const match = restaurants.filter(location => location.title.toLowerCase().includes(query))
+      this.setState({ locations: match})
+    }
 
     /*
     FourSquare
@@ -64,16 +71,16 @@ class Main extends Component {
             <Map zoom={13} center={this.state.center}>
           {this.state.locations.map(location => (
             <Marker
-              key={location.index}
+              key={location.id}
               position={{ lat: location.position[0], lng: location.position[1] }}
               onClick={() => {
-                this.onToggleInfo(location.index);
+                this.onToggleInfo(location.id);
               }}
             >
               {location.openInfo && (
                 <InfoWindow
-                  key={location.index}
-                  onCloseClick={() => this.onToggleInfo(location.index)}
+                  key={location.id}
+                  onCloseClick={() => this.onToggleInfo(location.id)}
                 >
                   <div>
                     <p>{location.title}</p>
@@ -86,7 +93,8 @@ class Main extends Component {
               )}
             </Marker>
           ))}
-            <SearchResults locations={this.state.locations} />
+          <input type="text" ref={node => {this.search = node}} onKeyUp={this.Search} />
+            <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
             </Map>
 
             </div>
