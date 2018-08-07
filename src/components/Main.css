@@ -1,0 +1,176 @@
+* {
+box-sizing: border-box;
+}
+
+html, body {
+min-height: 100%;
+}
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+.link {
+  text-decoration: none;
+}
+
+/* Button styling */
+.menu-toggle {
+  display: inline-block;
+  /* padding: .75em 15px; */
+  line-height: 1em;
+  font-size: 2em;
+  color: #008080;
+}
+
+.menu-toggle:hover,
+.menu-toggle:focus {
+  color: #FFFFFF;
+}
+
+/*
+ Mobile first - Offscreen menu style
+*/
+.main-menu {
+  position: absolute;
+  left: -200px;
+  top: 0;
+  height: 100%;
+  transition: left 0.3s ease;
+              /* box-shadow 0.3s ease; */
+  z-index: 999;
+  background: #008080;
+}
+
+.main-menu .list {
+  list-style: none;
+  margin: 0;
+  padding: 2.5em 0 0;
+  /* Hide shadow w/ -8px while 'closed' */
+  /* -webkit-box-shadow: -8px 0 8px rgba(0,0,0,.5);
+     -moz-box-shadow: -8px 0 8px rgba(0,0,0,.5);
+          box-shadow: -8px 0 8px rgba(0,0,0,.5); */
+  min-height: 100%;
+  width: 200px;
+  background: #008080;
+}
+
+.main-menu .link {
+  display: block;
+  padding: .35em 15px;
+  line-height: 1em;
+  font-size: 1.5em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.main-menu li:first-child .link {
+  border-top: 1px solid #383838;
+}
+
+.main-menu .link:hover,
+.main-menu .link:focus {
+  color: #FF7F50;
+}
+
+.main-menu .menu-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+
+/*
+ On small devices, allow it to toggle...
+*/
+/*
+ :target for non-JavaScript
+ aria-expanded="true/false" will be for JavaScript
+*/
+.main-menu:target,
+.main-menu[aria-expanded="true"] {
+  left: 0;
+  outline: none;
+  /* -moz-box-shadow: 3px 0 12px rgba(0,0,0,.25);
+  -webkit-box-shadow: 3px 0 12px rgba(0,0,0,.25);
+  box-shadow: 3px 0 12px rgba(0,0,0,.25); */
+}
+
+.main-menu:target .menu-close,
+.main-menu[aria-expanded="true"] .menu-close {
+  z-index: 1001;
+}
+
+.main-menu:target .list,
+.main-menu[aria-expanded="true"] .list {
+  position: relative;
+  z-index: 1000;
+}
+
+/*
+ We could us `.main-menu:target:after`, but
+ it wouldn't be clickable.
+*/
+.main-menu:target + .backdrop,
+.main-menu[aria-expanded="true"] + .backdrop {
+  position: absolute;
+  display: block;
+  content: "";
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 998;
+  /* background: #000;
+  background: rgba(0,0,0,.85); */
+  cursor: default;
+}
+
+@supports (position: fixed) {
+  .main-menu,
+  .main-menu:target + .backdrop,
+  .main-menu[aria-expanded="true"] + .backdrop {
+    position: fixed;
+  }
+}
+
+header {
+  background: #FF7F50;
+  padding: 5px;
+  color: #FFFFFF;
+  text-shadow: #222 0px -1px 1px;
+  /* position: relative; */
+  /* width: 100%; */
+  /* left: 0; */
+  /* transition: all 0.4s ease; */
+}
+
+header .headline{
+  text-align: right;
+  padding: 0 15px 0 0;
+}
+
+.input {
+  border: 5px solid #FFFFFF;
+  padding: 2px;
+  font-size: 16px;
+  color: #2F4F4F ;
+  background: rgba(255,255,255,0.7);
+  margin: 40px 0 10px 10px;
+}
+
+.list .links:hover {
+  color: #FF7F50;
+  cursor: pointer;
+}
+
+.list .list-item{
+  padding: 0 0 15px 15px;
+}

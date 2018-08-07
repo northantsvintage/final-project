@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Neighborhood Map",
+  "name": "React Neighborhood Map - Northampton Restaurants",
   "icons": [
     {
       "src": "favicon.ico",

@@ -2,13 +2,13 @@ import React from 'react'
 
 const SearchResults = (props) => {
   const locations = props.locations.map(location => (
-    <li key={location.id} onClick={() => {
+    <li key={location.id} className="list-item" onClick={() => {
       props.onToggleInfo(location.id);
     }}>
-      {location.title}
+      <a className="links">{location.title}</a>
     </li>
   ))
-  return <ul tabIndex="1">{locations}</ul>
+  return <ul className="list">{locations}</ul>
 }
 
 export default SearchResults

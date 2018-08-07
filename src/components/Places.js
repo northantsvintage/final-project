@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+// venues results in infWindow
 class Places extends Component {
     render(){
         const list = this.props.venues.map((venue, id ) => {
