@@ -83,7 +83,7 @@ class Main extends Component {
                 <span className="fa fa-bars" aria-hidden="true">{'\u2630'}</span>
               </a>
 
-                <h1 className="headline">Northampton Maps</h1>
+                <h1 className="headline" tabindex="0">Northampton Maps</h1>
 
                 <nav id="main-menu"
                    className="main-menu"
