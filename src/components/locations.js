@@ -5,7 +5,7 @@ export const restaurants = [
     address: "21 Gold St, Northampton NN1 1RA",
     call: "01604 947345",
     position: [52.237451, -0.898825],
-    openInfo: false
+    openInfo: false,
   },
   {
     id: 1,

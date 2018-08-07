@@ -40,12 +40,14 @@ class Main extends Component {
       })
     }
 
+    /*
+    manipulating openInfo boolean values to toggle on and off
+    loop throgh locations using map, check condition and
+    modifying objects properties with ... spread
+    // https://dmitripavlutin.com/object-rest-spread-properties-javascript/
+    // https://medium.com/front-end-hacking/immutability-in-array-of-objects-using-map-method-dd61584c7188
+    */
     onToggleInfo = id => {
-        // manipulating openInfo boolean values to toggle on and off
-        // loop throgh locations using map, check condition and
-        // modifying objects properties with ... spread
-        // https://dmitripavlutin.com/object-rest-spread-properties-javascript/
-        // https://medium.com/front-end-hacking/immutability-in-array-of-objects-using-map-method-dd61584c7188
       const new_locations = this.state.locations.map(
         location =>
           id === location.id ?
@@ -56,13 +58,42 @@ class Main extends Component {
       );
       this.setState({ locations: new_locations });
     };
-
+    /*
+      search method taking in query from input and manipulating
+      the state by setting locations to matched locations
+    */
     Search = (event) => {
       event.preventDefault();
       const query = this.search.value.toLowerCase()
       const match = restaurants.filter(location => location.title.toLowerCase().includes(query))
       this.setState({ locations: match})
     }
+
+    /*
+      assigning animation bounce on marker according to
+      the restaurants position by manipulating the state
+    */
+    onBounce = id => {
+    const locationAnimation = this.state.locations.map(
+      location =>
+        id === location.id
+          ? { ...location, animation: window.google.maps.Animation.BOUNCE }
+          : location
+    );
+    this.setState({
+      locations: locationAnimation,
+      center: restaurants[id].position
+    });
+
+    // to stop the animation after 1 sec
+    setTimeout(() => {
+      const stopAnimation = this.state.locations.map(
+        location =>
+          id === location.id ? { ...location, animation: undefined } : location
+      );
+      this.setState({ locations: stopAnimation });
+    }, 1000);
+  };
 
     /*
     https://scotch.io/tutorials/build-an-image-slider-using-react-superagent-and-the-instagram-api
@@ -83,7 +114,7 @@ class Main extends Component {
                 <span className="fa fa-bars" aria-hidden="true">{'\u2630'}</span>
               </a>
 
-                <h1 className="headline" tabindex="0">Northampton Maps</h1>
+                <h1 className="headline" tabIndex="0">Northampton Maps</h1>
 
                 <nav id="main-menu"
                    className="main-menu"
@@ -110,14 +141,16 @@ class Main extends Component {
               </header>
 
 
-              <Map zoom={13} center={this.state.center}>
+              <Map zoom={15} center={this.state.center}>
                 {this.state.locations.map(location => (
                   <Marker
                     key={location.id}
                     position={{ lat: location.position[0], lng: location.position[1] }}
                     onClick={() => {
                       this.onToggleInfo(location.id);
+                      this.onBounce(location.id);
                     }}
+                    animation={location.animation}
                   >
                   {location.openInfo && (
                     <InfoWindow

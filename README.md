@@ -1,6 +1,7 @@
 # REACT NEIGHBORHOOD MAP
 
 Project 8  - Final Project built in React. It uses Repsonsive Off-Canvas pattern with accessibility
+
 ## For Users
 
 - The application shows you Restaurant **locations in Northampton, UK**
