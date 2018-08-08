@@ -9,19 +9,36 @@ import './Main.css'
 
 
 class Main extends Component {
+  constructor(props) {
+    super(props)
+    this.Places = React.createRef();
+  }
     state = {
         locations: [],
         center: {
-            lat: 52.2454,
-            lng: -0.89
+            lat: 52.237657,
+            lng: -0.8919
           },
-          venues: []
+          venues: [],
+          activeLocation: {}
     }
 
+    pushIntoInfo(data) {
+
+       const node = this.myRef.current;
+       node.innerHtml = 'test'
+       console.log(data)
+
+ }
+
+
     componentDidMount() {
+      // const url = 'https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=OYKLBVCKXIBLKPHM2DEDVOYTZHDHWKHN3FCZY4H2GBATOQQY&v=20180808'
       // const url = 'https://api.foursquare.com/v2/venues/search?v=20140806&ll=52.237451,-0.898825&client_id= LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret= SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X'
       // const url = 'https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=OYKLBVCKXIBLKPHM2DEDVOYTZHDHWKHN3FCZY4H2GBATOQQY&v=20180806'
-      const url = 'https://api.foursquare.com/v2/venues/search?ll=52.237743,-0.891818&client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808'
+      const url = 'https://api.foursquare.com/v2/venues/search?ll=52.237743,-0.891818&intent=browse&radius=100000&client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808'
+      // console.log(url);
+      // client-side HTTP request library
       superagent
         .get(url)
         .query(null)
@@ -35,17 +52,35 @@ class Main extends Component {
 
         })
 
+      // this.fetchDataFS(location.idFS)
+
       this.setState({
         locations: restaurants
       })
     }
 
+    // selectLocation = location => {
+    // this.setState({
+    //   activeLocation: location,
+    // });
+
+    // this.fetchFourSquare(location.idFS);
+  // };
+
+  //   fetchFourSquare(id) {
+  //   fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808`)
+  //     .then(res => res.json())
+  //     .then(data =>
+  //       this.pushIntoInfo(data))
+  //     .catch(err => {
+  //       alert(`Unable to get data from FourSquare (${err})`);
+  //     });
+  // }
+
     /*
     manipulating openInfo boolean values to toggle on and off
     loop throgh locations using map, check condition and
     modifying objects properties with ... spread
-    // https://dmitripavlutin.com/object-rest-spread-properties-javascript/
-    // https://medium.com/front-end-hacking/immutability-in-array-of-objects-using-map-method-dd61584c7188
     */
     onToggleInfo = id => {
       const new_locations = this.state.locations.map(
@@ -53,7 +88,6 @@ class Main extends Component {
           id === location.id ?
           // modified value of openInfo, toggling InfoWindow
             { ...location, openInfo: !location.openInfo }
-            // setting openInfo to false value
             : { ...location, openInfo: false }
       );
       this.setState({ locations: new_locations });
@@ -95,13 +129,10 @@ class Main extends Component {
     }, 1000);
   };
 
-    /*
-    https://scotch.io/tutorials/build-an-image-slider-using-react-superagent-and-the-instagram-api
-    */
-
     render() {
         return(
           <div id="app">
+          <div id="infos" />
               <header>
               <a href="#main-menu"
                  className="menu-toggle link"
@@ -132,6 +163,7 @@ class Main extends Component {
                 </a>
                   <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} />
                   <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
+                  <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
                 </nav>
                 <a href="#main-menu-toggle"
                  className="backdrop link"
@@ -141,7 +173,7 @@ class Main extends Component {
               </header>
 
 
-              <Map zoom={15} center={this.state.center}>
+              <Map zoom={17} center={this.state.center}>
                 {this.state.locations.map(location => (
                   <Marker
                     key={location.id}
@@ -160,8 +192,7 @@ class Main extends Component {
                     <div>
                       <p>{location.title}</p>
                       <p>{location.address}</p>
-                      <p>{location.call}</p>
-                      <Places venues={this.state.venues} />
+                      <Places venues={this.state.venues} ref={this.Places}/>
                     </div>
                     </InfoWindow>
                   )}
