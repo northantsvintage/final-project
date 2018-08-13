@@ -27,15 +27,4 @@ Project 8  - Final Project built in React. It uses Repsonsive Off-Canvas pattern
 - It uses [`recompose`](https://github.com/)
 -  [`react-google-maps`](https://github.com/)
 -  [`superagent`](https://github.com/)
-- Google Maps APi
-
-
-### Project hierarchy
-
-The hierarchy of the React components is the following:
-
-```
-<Main />
---- <Navigation />
---- <Map />
-```
+- Google Maps API and FourSquare API

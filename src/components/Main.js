@@ -95,75 +95,79 @@ class Main extends Component {
 
     render() {
         return(
-          <div id="app">
-          <div id="infos" />
+          <div id="wrapper">
+
               <header>
-              <a href="#main-menu"
-                 className="menu-toggle link"
-                 role="button"
-                 id="main-menu-toggle"
-                 aria-expanded="false"
-                 aria-controls="main-menu"
-                 aria-label="Open main menu">
-                <span className="sr-only">Open main menu</span>
-                <span className="fa fa-bars" aria-hidden="true">{'\u2630'}</span>
-              </a>
-
-                <h1 className="headline" tabIndex="0">Northampton Maps</h1>
-
-                <nav id="main-menu"
-                   className="main-menu"
-                   aria-expanded="false"
-                   aria-label="Main menu">
-                <a href="#main-menu-toggle"
-                   className="menu-close link"
+                <a href="#main-menu"
+                   className="menu-toggle link"
                    role="button"
-                   id="main-menu-close"
+                   id="main-menu-toggle"
                    aria-expanded="false"
                    aria-controls="main-menu"
-                   aria-label="Close main menu">
-                  <span className="sr-only">Close main menu</span>
-                  <span className="fa fa-close" aria-hidden="true">x</span>
+                   aria-label="Open main menu">
+                  <span className="sr-only">Open main menu</span>
+                  <span className="fa fa-bars" aria-hidden="true">{'\u2630'}</span>
                 </a>
-                  <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} />
-                  <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
-                  <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
-                </nav>
-                <a href="#main-menu-toggle"
-                 className="backdrop link"
-                 tabIndex="-1"
-                 aria-hidden="true"
-                 hidden>x</a>
-              </header>
 
+                  <h1 className="headline" tabIndex="0">Northampton Maps</h1>
 
-              <Map zoom={17} center={this.state.center}>
-                {this.state.locations.map(location => (
-                  <Marker
-                    key={location.id}
-                    position={{ lat: location.position[0], lng: location.position[1] }}
-                    onClick={() => {
-                      this.onToggleInfo(location.id);
-                      this.onBounce(location.id);
-                    }}
-                    animation={location.animation}
-                  >
-                  {location.openInfo && (
-                    <InfoWindow
-                    key={location.id}
-                    onCloseClick={() => this.onToggleInfo(location.id)}
-                  >
+                  <nav id="main-menu"
+                     className="main-menu"
+                     aria-expanded="false"
+                     aria-label="Main menu">
+                    <a href="#main-menu-toggle"
+                       className="menu-close link"
+                       role="button"
+                       id="main-menu-close"
+                       aria-expanded="false"
+                       aria-controls="main-menu"
+                       aria-label="Close main menu">
+                      <span className="sr-only">Close main menu</span>
+                      <span className="fa fa-close" aria-hidden="true">x</span>
+                    </a>
+                      <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} />
+                      <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
+                    </nav>
 
-                    <div>
-                    <Places venues={this.state.venues} location={location} />
-                    </div>
-                    </InfoWindow>
-                  )}
-                </Marker>
-              ))}
-              </Map>
+                      <a href="#main-menu-toggle"
+                       className="backdrop link"
+                       tabIndex="-1"
+                       aria-hidden="true"
+                       hidden>x
+                       </a>
+                  </header>
 
-          </div>
+                  <section>
+                    <Map zoom={17} center={this.state.center}>
+                      {this.state.locations.map(location => (
+                        <Marker
+                          key={location.id}
+                          position={{ lat: location.position[0], lng: location.position[1] }}
+                          onClick={() => {
+                            this.onToggleInfo(location.id);
+                            this.onBounce(location.id);
+                          }}
+                          animation={location.animation}
+                        >
+                        {location.openInfo && (
+                          <InfoWindow
+                          key={location.id}
+                          onCloseClick={() => this.onToggleInfo(location.id)}
+                        >
+
+                          <div className="infoWindow">
+                          <Places venues={this.state.venues} location={location} />
+                          </div>
+                          </InfoWindow>
+                        )}
+                      </Marker>
+                    ))}
+                    </Map>
+                    </section>
+                    <footer className="footer">
+                      <p className="made-by">Made by northantsvintage</p>
+                    </footer>
+              </div>
 
         )
     }

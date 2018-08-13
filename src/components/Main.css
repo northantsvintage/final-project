@@ -1,177 +1,142 @@
-* {
-box-sizing: border-box;
+body, html {
+height : 100%;
+width : 100%;
+background: #ff7f50;
 }
-
-html, body {
-min-height: 100%;
+.wrapper {
+font-weight : bold;
+text-align : center;
 }
-
-
+section {
+width : 100%;
+height : 100%;
+}
 .link {
-  text-decoration: none;
+text-decoration : none;
 }
-
-/* Button styling */
 .menu-toggle {
-  display: inline-block;
-  /* padding: .75em 15px; */
-  line-height: 1em;
-  font-size: 2em;
-  color: #008080;
+display : inline-block;
+line-height : 1em;
+font-size : 2em;
+color : #008080;
 }
-
-.menu-toggle:hover,
-.menu-toggle:focus {
-  color: #FFFFFF;
+.menu-toggle:hover, .menu-toggle:focus {
+color : #ffffff;
 }
-
-/*
- Mobile first - Offscreen menu style
-*/
 .main-menu {
-  position: absolute;
-  left: -200px;
-  top: 0;
-  height: 740px;
-  transition: left 0.3s ease;
-  z-index: 999;
-  background: #008080;
+position : absolute;
+left : -200px;
+top : 0;
+height : 70vh;
+z-index : 999;
+background : #008080;
 }
-
 .main-menu .list {
-  list-style: none;
-  margin: 0;
-  padding: 2.5em 0 0;
-  min-height: 100%;
-  width: 200px;
-  background: #008080;
+list-style : none;
+margin : 0;
+padding : 2.5em 0 0;
+height : 100%;
+width : 200px;
+background : #008080;
 }
-
 .main-menu .link {
-  display: block;
-  padding: .35em 15px;
-  line-height: 1em;
-  font-size: 1.5em;
-  color: #fff;
-  text-decoration: none;
+display : block;
+padding : 0.35em 15px;
+line-height : 1em;
+font-size : 1.5em;
+color : #fff;
+text-decoration : none;
 }
-
 .main-menu li:first-child .link {
-  border-top: 1px solid #383838;
+border-top : 1px solid #383838;
 }
-
-.main-menu .link:hover,
-.main-menu .link:focus {
-  color: #FF7F50;
+.main-menu .link:hover, .main-menu .link:focus {
+color : #ff7f50;
 }
-
 .main-menu .menu-close {
-  position: absolute;
-  right: 0;
-  top: 0;
+position : absolute;
+right : 0;
+top : 0;
 }
-
-
-/*
- On small devices, allow it to toggle...
-*/
-/*
- :target for non-JavaScript
- aria-expanded="true/false" will be for JavaScript
-*/
-.main-menu:target,
-.main-menu[aria-expanded="true"] {
-  left: 0;
-  outline: none;
+.main-menu:target, .main-menu[aria-expanded="true"] {
+left : 0;
+outline : none;
 }
-
-.main-menu:target .menu-close,
-.main-menu[aria-expanded="true"] .menu-close {
-  z-index: 1001;
+.main-menu:target .menu-close, .main-menu[aria-expanded="true"] .menu-close {
+z-index : 1001;
 }
-
-.main-menu:target .list,
-.main-menu[aria-expanded="true"] .list {
-  position: relative;
-  z-index: 1000;
+.main-menu:target .list, .main-menu[aria-expanded="true"] .list {
+position : relative;
+z-index : 1000;
 }
-
-/*
- We could us `.main-menu:target:after`, but
- it wouldn't be clickable.
-*/
-.main-menu:target + .backdrop,
-.main-menu[aria-expanded="true"] + .backdrop {
-  position: absolute;
-  display: block;
-  content: "";
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 998;
-  cursor: default;
+.main-menu:target + .backdrop, .main-menu[aria-expanded="true"] + .backdrop {
+position : absolute;
+display : block;
+content : "";
+left : 0;
+top : 0;
+width : 100%;
+height : 100%;
+z-index : 998;
+cursor : default;
 }
-
-@supports (position: fixed) {
-  .main-menu,
-  .main-menu:target + .backdrop,
-  .main-menu[aria-expanded="true"] + .backdrop {
-    position: fixed;
-  }
-}
-
 header {
-  background: #FF7F50;
-  padding: 5px;
-  color: #FFFFFF;
-  text-shadow: #222 0px -1px 1px;
+background : #ff7f50;
+/* padding : 5px; */
+color : #ffffff;
+height: 12vh;
 }
-
-header .headline{
-  text-align: right;
-  padding: 0 15px 0 0;
-  margin: 0px;
+.headline {
+text-align : right;
+padding : 0 15px 0 0;
+margin : 0;
+color: #ffffff;
 }
-
 .input {
-  border: 5px solid #FFFFFF;
-  padding: 2px;
-  font-size: 16px;
-  color: #2F4F4F ;
-  background: rgba(255,255,255,0.7);
-  margin: 40px 0 10px 10px;
+border : 5px solid #ffffff;
+padding : 2px;
+font-size : 16px;
+color : #2f4f4f;
+margin : 40px 0 10px 10px;
 }
-
 .list .links:hover {
-  color: #FF7F50;
-  cursor: pointer;
+color : #ff7f50;
+cursor : pointer;
 }
-
-.list .list-item{
-  padding: 0 0 15px 15px;
+.list .list-item {
+padding : 0 0 15px 15px;
 }
-.info {
-  position: absolute;
-left: 30px;
-top: 10px;
-padding: 5px;
-background-color: #fff;
-z-index: 1000;
--webkit-box-shadow: -1px 7px 32px -2px rgba(0,0,0,.75);
-box-shadow: -1px 7px 32px -2px rgba(0,0,0,.75);
-font-family: Open Sans Condensed,sans-serif;
-font-size: 2.5vh;
+.footer {
+text-align : center;
+color :  #ffffff;
 }
-
-/* Screen reader only */
+.made-by {
+  margin: 30px 0 0 0;
+}
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
+position : absolute;
+width : 1px;
+height : 1px;
+padding : 0;
+margin : -1px;
+overflow : hidden;
+clip : rect(0,0,0,0);
+border : 0;
+}
+.address {
+  float: left;
+}
+.icon{
+  float: right;
+}
+.icon-position {
+  margin: 20px 0 0 20px;
+}
+.formatted-Address {
+  list-style: none;
+  padding: 5px 0;
+}
+/* Media Queries */
+@media all and (min-width: 800px) {
+  section   { flex: 3 0px; }
 }

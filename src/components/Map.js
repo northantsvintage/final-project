@@ -10,8 +10,8 @@ const Map = compose(
     googleMapURL:
       "https://maps.googleapis.com/maps/api/js?key=AIzaSyA_3niI9e5yxgUf27WM6qaHRTWJhvxl2Dc&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: "100%", backgroundColor: "grey" }} />,
-    containerElement: <div style={{ height: "700px",margin: "0 0 50px 0" }} />,
-    mapElement: <div style={{ height: "100%" }} />
+    containerElement: <div style={{ height: "70vh" }} />,
+    mapElement: <div style={{ height: "100%", display: "flex", flexFlow: 'row nowrap' }} />
   }),
   withScriptjs,
   withGoogleMap

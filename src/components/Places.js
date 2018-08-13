@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import superagent from "superagent";
 
-/*
-  Info-Window is place in this component
- */
 class Places extends Component {
   constructor(props) {
     super(props);
@@ -57,16 +54,20 @@ class Places extends Component {
 
     return (
 
-      <div>
-          <p>{this.props.location.title}</p>
-          {this.state.icon ? <img alt={this.props.location.title} style={{marginLeft:20, backgroundColor:'#FF7F50'}} src={this.state.icon} /> : null}
-          <br />
-          <b> Address </b>
-          <ul style={{listStyle: 'none'}}>
-          {this.state.foundLocation.location.formattedAddress.map((addr,i) =>(
-               <li key={i}> {addr} </li>
-          ))}
-          </ul>
+      <div className="info-Window">
+          <div className="address">
+            <p>{this.props.location.title}</p>
+            <ul className="formatted-Address">
+            {this.state.foundLocation.location.formattedAddress.map((addr,i) =>(
+                 <li key={i}> {addr} </li>
+            ))}
+
+            </ul>
+          </div>
+          <div className="icon">
+            {this.state.icon ? <img className="icon-position" alt={this.props.location.title} style={{marginLeft:20, backgroundColor:'#FF7F50'}} src={this.state.icon} /> : null}
+          </div>
+
       </div>
     );
   }
