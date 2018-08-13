@@ -2,7 +2,6 @@ export const restaurants = [
   {
     id: 0,
     title: "Chata Polish Restaurant",
-    address: "58 St Giles' St",
     call: "01604 947345",
     position: [52.237657, -0.8919],
     openInfo: false,
@@ -11,7 +10,6 @@ export const restaurants = [
   {
     id: 1,
     title: "Akasaka",
-    address: "Castillian Street",
     call: "01604 233011",
     position: [52.237311, -0.892575],
     openInfo: false,
@@ -20,7 +18,6 @@ export const restaurants = [
   {
     id: 2,
     title: "Pamukkale",
-    address: "54 St Giles' St, Northampton NN1 1JW",
     call: "01604 947600",
     position: [52.237743, -0.891818],
     openInfo: false,
@@ -29,7 +26,6 @@ export const restaurants = [
   {
     id: 3,
     title: "The Cordwainer",
-    address: "The Ridings",
     call: "01604 637652",
     position: [52.23794712166842, -0.8927248035439486],
     openInfo: false,
@@ -37,11 +33,10 @@ export const restaurants = [
   },
   {
     id: 4,
-    title: "Brooklyn Pizza Bar",
-    address: "Fish Street",
+    title: "Jenny's Café & Restaurant",
     call: "01604 603800",
-    position: [52.23760326094107, -0.8931326866149901],
+    position: [52.23854936169176, -0.8920812606811523],
     openInfo: false,
-    idFS: "59496d999d6a191e64136799"
+    idFS: "4f031f9c93adc8245bc24649"
   }
 ];

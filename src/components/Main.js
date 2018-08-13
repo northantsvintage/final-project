@@ -9,35 +9,19 @@ import './Main.css'
 
 
 class Main extends Component {
-  constructor(props) {
-    super(props)
-    this.Places = React.createRef();
-  }
     state = {
         locations: [],
         center: {
             lat: 52.237657,
             lng: -0.8919
           },
-          venues: [],
-          activeLocation: {}
+          venues: []
     }
-
-    pushIntoInfo(data) {
-
-       const node = this.myRef.current;
-       node.innerHtml = 'test'
-       console.log(data)
-
- }
 
 
     componentDidMount() {
-      // const url = 'https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=OYKLBVCKXIBLKPHM2DEDVOYTZHDHWKHN3FCZY4H2GBATOQQY&v=20180808'
-      // const url = 'https://api.foursquare.com/v2/venues/search?v=20140806&ll=52.237451,-0.898825&client_id= LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret= SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X'
-      // const url = 'https://api.foursquare.com/v2/venues/49eeaf08f964a52078681fe3?&oauth_token=OYKLBVCKXIBLKPHM2DEDVOYTZHDHWKHN3FCZY4H2GBATOQQY&v=20180806'
       const url = 'https://api.foursquare.com/v2/venues/search?ll=52.237743,-0.891818&intent=browse&radius=100000&client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808'
-      // console.log(url);
+
       // client-side HTTP request library
       superagent
         .get(url)
@@ -45,37 +29,17 @@ class Main extends Component {
         .set('Accept', 'text/json')
         .end((error, response) => {
             const venues = response.body.response.venues
-            console.log(JSON.stringify(venues))
+            // console.log(JSON.stringify(venues))
             this.setState({
                 venues: venues
             })
 
         })
 
-      // this.fetchDataFS(location.idFS)
-
       this.setState({
         locations: restaurants
       })
     }
-
-    // selectLocation = location => {
-    // this.setState({
-    //   activeLocation: location,
-    // });
-
-    // this.fetchFourSquare(location.idFS);
-  // };
-
-  //   fetchFourSquare(id) {
-  //   fetch(`https://api.foursquare.com/v2/venues/${id}?client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808`)
-  //     .then(res => res.json())
-  //     .then(data =>
-  //       this.pushIntoInfo(data))
-  //     .catch(err => {
-  //       alert(`Unable to get data from FourSquare (${err})`);
-  //     });
-  // }
 
     /*
     manipulating openInfo boolean values to toggle on and off
@@ -92,6 +56,7 @@ class Main extends Component {
       );
       this.setState({ locations: new_locations });
     };
+
     /*
       search method taking in query from input and manipulating
       the state by setting locations to matched locations
@@ -104,8 +69,7 @@ class Main extends Component {
     }
 
     /*
-      assigning animation bounce on marker according to
-      the restaurants position by manipulating the state
+      assigning animation bounce on marker
     */
     onBounce = id => {
     const locationAnimation = this.state.locations.map(
@@ -116,10 +80,10 @@ class Main extends Component {
     );
     this.setState({
       locations: locationAnimation,
-      center: restaurants[id].position
+      // center: restaurants[id].position
     });
 
-    // to stop the animation after 1 sec
+    // stop the animation after 1 sec
     setTimeout(() => {
       const stopAnimation = this.state.locations.map(
         location =>
@@ -189,10 +153,9 @@ class Main extends Component {
                     key={location.id}
                     onCloseClick={() => this.onToggleInfo(location.id)}
                   >
+
                     <div>
-                      <p>{location.title}</p>
-                      <p>{location.address}</p>
-                      <Places venues={this.state.venues} ref={this.Places}/>
+                    <Places venues={this.state.venues} location={location} />
                     </div>
                     </InfoWindow>
                   )}

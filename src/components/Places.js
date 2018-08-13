@@ -1,24 +1,75 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import superagent from "superagent";
 
-// venues results in infoWindow
+/*
+  Info-Window is place in this component
+ */
 class Places extends Component {
-    render(){
-        return (
-            <div>
-                <ol>
-                {this.props.venues.map(venue => (
-                    <li
-                      key={venue.title}
-                      tabIndex="0"
-                    >
-                      <span className="locationtitle">{venue.name} - Coming from Foursquare</span>
-                    </li>
-                  ))}
-                </ol>
+  constructor(props) {
+    super(props);
+    this.state = {
+      windowLocation: this.props.location,
+      loading: true,
+      venues: '',
+      foundLocation:null,
+      icon: ''
+    };
+  }
+  componentDidMount() {
+    this.getLocationDetails(this.props.location);
+  }
 
-            </div>
-        )
+  getLocationDetails(location) {
+    var ll = location.position[0] + "," + location.position[1];
+    const url =
+      "https://api.foursquare.com/v2/venues/search?ll=" +
+      ll +
+      "&intent=checkin&client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808";
+    superagent
+      .get(url)
+      .query(null)
+      .set("Accept", "text/json")
+      .end((error, response) => {
+        const venues = response.body.response.venues;
+        const locationAddress = response.body.response.venues.find(function(venue){
+            if(venue.id === location.idFS){
+                return venue;
+            }
+            return null
+        });
+        this.setState({
+            venues: venues,
+            foundLocation: locationAddress,
+            loading:false,
+            icon : locationAddress.categories ? locationAddress.categories[0].icon.prefix+"88"+locationAddress.categories[0].icon.suffix : null
+        })
+      });
+
+  }
+
+  render() {
+    const { loading } = this.state;
+
+    if (loading) {
+      // if your component doesn't have to wait for an async action, remove this block
+      return <p> Loading </p>; // render null when app is not ready
     }
+
+    return (
+
+      <div>
+          <p>{this.props.location.title}</p>
+          {this.state.icon ? <img alt={this.props.location.title} style={{marginLeft:20, backgroundColor:'#FF7F50'}} src={this.state.icon} /> : null}
+          <br />
+          <b> Address </b>
+          <ul style={{listStyle: 'none'}}>
+          {this.state.foundLocation.location.formattedAddress.map((addr,i) =>(
+               <li key={i}> {addr} </li>
+          ))}
+          </ul>
+      </div>
+    );
+  }
 }
 
-export default Places
+export default Places;
