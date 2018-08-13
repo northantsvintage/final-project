@@ -25,18 +25,20 @@ color : #ffffff;
 }
 .main-menu {
 position : absolute;
-left : -200px;
+left : -300px;
 top : 0;
 height : 70vh;
 z-index : 999;
 background : #008080;
+height: 100%;
+overflow-x: visible;
 }
 .main-menu .list {
 list-style : none;
 margin : 0;
 padding : 2.5em 0 0;
 height : 100%;
-width : 200px;
+width : 300px;
 background : #008080;
 }
 .main-menu .link {
