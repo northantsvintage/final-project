@@ -20,6 +20,10 @@ Project 8  - Final Project built in React. It uses Repsonsive Off-Canvas pattern
 - Run `npm install`
 - Run `npm start`
 - The application will open in your browser
+- `npm run build` builds the app for production mode, bundles the app into static files for production
+
+### Offline Use
+ - App uses default create-react-app Service Worker. It works only in production mode
 
 ### Project was built on
 
