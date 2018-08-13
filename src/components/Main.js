@@ -125,7 +125,7 @@ class Main extends Component {
                       <span className="sr-only">Close main menu</span>
                       <span className="fa fa-close" aria-hidden="true">x</span>
                     </a>
-                      <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} />
+                      <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} aria-label="Search" />
                       <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
                     </nav>
 
