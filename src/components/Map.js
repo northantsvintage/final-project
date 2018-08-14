@@ -5,7 +5,7 @@ import { withScriptjs, withGoogleMap, GoogleMap} from "react-google-maps";
 /*
  Map settings as per official react google map configuration with recompose
 */
-const exampleMapStyles = [
+const mapStyles = [
   {
     "elementType": "geometry",
     "stylers": [
@@ -59,6 +59,14 @@ const exampleMapStyles = [
   },
   {
     "featureType": "landscape.man_made",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "landscape.man_made",
     "elementType": "geometry.stroke",
     "stylers": [
       {
@@ -103,6 +111,46 @@ const exampleMapStyles = [
     ]
   },
   {
+    "featureType": "poi.attraction",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.government",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.medical",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
     "featureType": "poi.park",
     "elementType": "geometry.fill",
     "stylers": [
@@ -117,6 +165,30 @@ const exampleMapStyles = [
     "stylers": [
       {
         "color": "#3C7680"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.place_of_worship",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.school",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.sports_complex",
+    "stylers": [
+      {
+        "visibility": "off"
       }
     ]
   },
@@ -255,7 +327,7 @@ const Map = compose(
     defaultCenter={{ lat: 52.23854936169176, lng: -0.8920812606811523 }}
     zoom={props.zoom}
     options={{
-            styles: exampleMapStyles,
+            styles: mapStyles,
         }}
   >
     {props.children}

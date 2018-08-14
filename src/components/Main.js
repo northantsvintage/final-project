@@ -169,7 +169,7 @@ class Main extends Component {
                    <div id="map-container" tabIndex="0">
                     <Map zoom={17} center={this.state.center} >
                       {this.state.locations.map(location => (
-                        <Marker
+                        <Marker 
                           key={location.id}
                           position={{ lat: location.position[0], lng: location.position[1] }}
                           onClick={() => {
@@ -186,7 +186,7 @@ class Main extends Component {
 
 
                           <Places venues={this.state.venues} location={location} />
-                          
+
                           </InfoWindow>
                         )}
                       </Marker>
