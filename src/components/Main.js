@@ -153,7 +153,7 @@ class Main extends Component {
                       <span className="sr-only">Close main menu</span>
                       <span className="fa fa-close" aria-hidden="true">x</span>
                     </a>
-                      <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} aria-label="Search" />
+                      <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} aria-label="Search" placeholder = "Search" />
                       <SearchResults locations={this.state.locations} onSearchToggleInfo={this.onSearchToggleInfo} />
                     </nav>
 
@@ -184,9 +184,9 @@ class Main extends Component {
                           onCloseClick={() => this.onToggleInfo(location.id)}
                         >
 
-                          <div className="infoWindow">
+
                           <Places venues={this.state.venues} location={location} />
-                          </div>
+                          
                           </InfoWindow>
                         )}
                       </Marker>

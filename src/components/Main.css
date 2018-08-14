@@ -17,7 +17,8 @@ text-decoration : none;
 .menu-toggle {
 display : inline-block;
 line-height : 1em;
-font-size : 2em;
+font-size : 2.5em;
+padding: 10px;
 color : #304A7D;
 }
 .menu-toggle:hover, .menu-toggle:focus {
@@ -149,6 +150,9 @@ border : 0;
 .a-fs {
   color: #304A7D;
   text-decoration: none;
+}
+.info-Window {
+  color: #304A7D;
 }
 /* Media Queries */
 @media all and (min-width: 800px) {
