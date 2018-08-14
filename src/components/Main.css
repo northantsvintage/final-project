@@ -138,6 +138,13 @@ border : 0;
   list-style: none;
   padding: 5px 0;
 }
+.warning {
+  font-size: 40px;
+  padding: 20px;
+}
+.success {
+  display: none;
+}
 /* Media Queries */
 @media all and (min-width: 800px) {
   section   { flex: 3 0px; }

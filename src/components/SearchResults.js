@@ -9,7 +9,7 @@ const SearchResults = (props) => {
       <a className="links">{location.title}</a>
     </li>
   ))
-  return <ul aria-label="list of locations" className="list">{locations}</ul>
+  return <ul aria-labelledby="list of locations" className="list">{locations}</ul>
 }
 
 export default SearchResults

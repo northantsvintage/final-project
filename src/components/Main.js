@@ -18,16 +18,6 @@ class Main extends Component {
           venues: []
     }
 
-    componentWillMount() {
-    let icon = {
-        url: 'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png'//'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png' //'http://maps.gstatic.com/mapfiles/markers2/marker.png'//'http://maps.google.com/mapfiles/ms/icons/POI.shadow.png' //google.maps.SymbolPath.CIRCLE, //FORWARD_CLOSED_ARROW
-    }
-    this.setState({
-      markerIcon: icon,
-      defaultMarkerIcon: icon
-    })
-  }
-
     componentDidMount() {
       const url = 'https://api.foursquare.com/v2/venues/search?ll=52.237743,-0.891818&intent=browse&radius=100000&client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808'
 
@@ -150,7 +140,7 @@ class Main extends Component {
                   </header>
 
                   <section>
-                   <div id="map-container" role="application" aria-labelledby="rg-label" tabIndex="0">
+                   <div id="map-container" tabIndex="0">   
                     <Map zoom={17} center={this.state.center} >
                       {this.state.locations.map(location => (
                         <Marker
@@ -179,7 +169,11 @@ class Main extends Component {
                     </div>
                     </section>
                     <footer className="footer">
-                      <p className="made-by">Made by northantsvintage</p>
+                      <h2 tabIndex={0}>
+                  		  Site integrated with <a href="https://developer.foursquare.com/" tabIndex={0}
+                  		 	aria-label="Link to four square API developer site"> Foursquare API</a>
+                  		</h2>
+                      <p className="made-by">Made by @northantsvintage</p>
                     </footer>
               </div>
 
