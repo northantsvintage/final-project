@@ -58,6 +58,33 @@ class Main extends Component {
     };
 
     /*
+      Toggle Info and Bounce Animation for Search Results - Navigation
+    */
+    onSearchToggleInfo = id => {
+
+      const locationAnimation = this.state.locations.map(
+        location =>
+          id === location.id
+            ? { ...location, animation: window.google.maps.Animation.BOUNCE, openInfo: !location.openInfo  }
+            : { ...location, openInfo: false }
+          );
+        this.setState({
+          locations: locationAnimation,
+        });
+
+      // stop the animation after 2 sec
+      setTimeout(() => {
+        const stopAnimation = this.state.locations.map(
+          location =>
+            id === location.id ? { ...location, animation: undefined } : location
+        );
+        this.setState({ locations: stopAnimation });
+      }, 2000);
+
+    };
+
+
+    /*
       search method taking in query from input and manipulating
       the state by setting locations to matched locations
     */
@@ -91,6 +118,7 @@ class Main extends Component {
       );
       this.setState({ locations: stopAnimation });
     }, 1000);
+
   };
 
     render() {
@@ -126,7 +154,7 @@ class Main extends Component {
                       <span className="fa fa-close" aria-hidden="true">x</span>
                     </a>
                       <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} aria-label="Search" />
-                      <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} onBounce={this.onBounce} />
+                      <SearchResults locations={this.state.locations} onSearchToggleInfo={this.onSearchToggleInfo} />
                     </nav>
 
                       <a href="#main-menu-toggle"
