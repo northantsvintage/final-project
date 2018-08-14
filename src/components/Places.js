@@ -12,10 +12,12 @@ class Places extends Component {
       icon: ''
     };
   }
+
   componentDidMount() {
     this.getLocationDetails(this.props.location);
   }
 
+  
   getLocationDetails(location) {
     var ll = location.position[0] + "," + location.position[1];
     const url =

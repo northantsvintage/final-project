@@ -18,7 +18,7 @@ text-decoration : none;
 display : inline-block;
 line-height : 1em;
 font-size : 2em;
-color : #008080;
+color : #304A7D;
 }
 .menu-toggle:hover, .menu-toggle:focus {
 color : #ffffff;
@@ -29,7 +29,7 @@ left : -300px;
 top : 0;
 height : 70vh;
 z-index : 999;
-background : #008080;
+background : #304A7D;
 height: 100%;
 overflow-x: visible;
 }
@@ -39,7 +39,7 @@ margin : 0;
 padding : 2.5em 0 0;
 height : 100%;
 width : 300px;
-background : #008080;
+background : #304A7D;
 }
 .main-menu .link {
 display : block;
@@ -86,7 +86,7 @@ header {
 background : #ff7f50;
 /* padding : 5px; */
 color : #ffffff;
-height: 12vh;
+height: 20vh;
 }
 .headline {
 text-align : right;

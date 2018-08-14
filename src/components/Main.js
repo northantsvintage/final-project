@@ -18,6 +18,15 @@ class Main extends Component {
           venues: []
     }
 
+    componentWillMount() {
+    let icon = {
+        url: 'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png'//'http://maps.gstatic.com/mapfiles/markers2/boost-marker-mapview.png' //'http://maps.gstatic.com/mapfiles/markers2/marker.png'//'http://maps.google.com/mapfiles/ms/icons/POI.shadow.png' //google.maps.SymbolPath.CIRCLE, //FORWARD_CLOSED_ARROW
+    }
+    this.setState({
+      markerIcon: icon,
+      defaultMarkerIcon: icon
+    })
+  }
 
     componentDidMount() {
       const url = 'https://api.foursquare.com/v2/venues/search?ll=52.237743,-0.891818&intent=browse&radius=100000&client_id=LSOLJXIKSXNPBIUUXTR5J1JTUBKZQ4TL3CNFW4ZDE0MHFBJJ&client_secret=SMQR2A2LHE2ORUXF32MHYME5VEAEOIDBTNCAJYBZU1D01C3X&v=20180808'
@@ -30,6 +39,9 @@ class Main extends Component {
         .end((error, response) => {
             const venues = response.body.response.venues
             // console.log(JSON.stringify(venues))
+
+            if (error) return error
+
             this.setState({
                 venues: venues
             })
@@ -126,7 +138,7 @@ class Main extends Component {
                       <span className="fa fa-close" aria-hidden="true">x</span>
                     </a>
                       <input type="text" className="input" ref={node => {this.search = node}} onKeyUp={this.Search} aria-label="Search" />
-                      <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} />
+                      <SearchResults locations={this.state.locations} onToggleInfo={this.onToggleInfo} onBounce={this.onBounce} />
                     </nav>
 
                       <a href="#main-menu-toggle"
@@ -138,7 +150,8 @@ class Main extends Component {
                   </header>
 
                   <section>
-                    <Map zoom={17} center={this.state.center}>
+                   <div id="map-container" role="application" aria-labelledby="rg-label" tabIndex="0">
+                    <Map zoom={17} center={this.state.center} >
                       {this.state.locations.map(location => (
                         <Marker
                           key={location.id}
@@ -163,6 +176,7 @@ class Main extends Component {
                       </Marker>
                     ))}
                     </Map>
+                    </div>
                     </section>
                     <footer className="footer">
                       <p className="made-by">Made by northantsvintage</p>
