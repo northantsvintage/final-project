@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Main from './components/Main'
+import './App.css'
 
 function showStatus(online) {
   const statusEl = document.querySelector('.network-status');
@@ -33,7 +34,7 @@ class App extends Component {
   render() {
     return (
         <div>
-        <span className="network-status"></span>
+        <span className="network-status blink"></span>
         <Main role="application" />
 
         </div>

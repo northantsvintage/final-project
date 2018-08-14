@@ -26,17 +26,15 @@ class Main extends Component {
         .get(url)
         .query(null)
         .set('Accept', 'text/json')
-        .end((error, response) => {
+        .then(response => {
             const venues = response.body.response.venues
-            // console.log(JSON.stringify(venues))
-
-            if (error) return error
-
             this.setState({
-                venues: venues
+              venues: venues
             })
-
-        })
+         })
+         .catch(error => {
+            alert(error.message)
+         });
 
       this.setState({
         locations: restaurants
@@ -140,7 +138,7 @@ class Main extends Component {
                   </header>
 
                   <section>
-                   <div id="map-container" tabIndex="0">   
+                   <div id="map-container" tabIndex="0">
                     <Map zoom={17} center={this.state.center} >
                       {this.state.locations.map(location => (
                         <Marker
@@ -170,7 +168,7 @@ class Main extends Component {
                     </section>
                     <footer className="footer">
                       <h2 tabIndex={0}>
-                  		  Site integrated with <a href="https://developer.foursquare.com/" tabIndex={0}
+                  		  Site integrated with <a className="a-fs" href="https://developer.foursquare.com/" tabIndex={0}
                   		 	aria-label="Link to four square API developer site"> Foursquare API</a>
                   		</h2>
                       <p className="made-by">Made by @northantsvintage</p>

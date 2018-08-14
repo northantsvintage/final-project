@@ -139,11 +139,16 @@ border : 0;
   padding: 5px 0;
 }
 .warning {
-  font-size: 40px;
+  font-size: 28px;
   padding: 20px;
+  margin-left: 40%;
 }
 .success {
   display: none;
+}
+.a-fs {
+  color: #304A7D;
+  text-decoration: none;
 }
 /* Media Queries */
 @media all and (min-width: 800px) {
