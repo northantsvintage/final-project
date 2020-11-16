@@ -314,7 +314,7 @@ const mapStyles = [
 const Map = compose(
   withProps({
     googleMapURL:
-      "https://maps.googleapis.com/maps/api/js?key=AIzaSyAzN15dmDDQYjib7kLBv5-TGstLqL8uYqA&v=3.exp&libraries=geometry,drawing,places",
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyARFH2N1wX-6TheUqyJ2VELuWXv4iSxIbs&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: "100%", backgroundColor: "grey" }} />,
     containerElement: <div style={{ height: "70vh" }} />,
     mapElement: <div style={{ height: "100%", display: "flex", flexFlow: 'row nowrap' }} />
